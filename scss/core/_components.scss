@@ -1,0 +1,669 @@
+img {
+    max-width: 100%;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    -o-user-select: none;
+    user-select: none;
+    outline: 0;
+    object-fit: contain;
+    &.--center {
+        margin: 0 auto;
+        display: block;
+    }
+}
+
+.--hidden {
+    display: none;
+}
+.--text-center {
+    text-align: center;
+}
+.--bg-black {
+    background-color: var(--black-cl);
+}
+
+.--w-full {
+    width: 100%;
+}
+
+// ------
+/* Textbox */
+.textbox {
+    $pd-line: 74px;
+    .desc {
+        margin-top: 10px;
+    }
+    &.--textbox-c {
+        text-align: center;
+    }
+    &.--textbox-l {
+        text-align: left;
+        padding-left: $pd-line;
+    }
+    &.--textbox-r {
+        text-align: right;
+        padding-right: $pd-line;
+        padding-left: initial;
+    }
+    &.--white-cl {
+        color: var(--white-cl);
+    }
+
+    @media screen and (max-width: 767.98px) {
+        .desc {
+            margin-top: 8px;
+        }
+    }
+}
+
+// ------
+/* Heading */
+.heading {
+    color: var(--black-cl);
+    font-family: var(--font-body-bold);
+    text-transform: uppercase;
+    position: relative;
+    &.--h1 {
+        font-size: var(--fs-h1);
+        line-height: var(--lh-h1);
+        letter-spacing: var(--ls-h1);
+    }
+    &.--h2 {
+        font-size: var(--fs-h2);
+        line-height: var(--lh-h2);
+        letter-spacing: var(--ls-h2);
+        &.--line-l {
+            &::before {
+                content: "";
+                display: block;
+                @include size(58px, 5px);
+                background: var(--main-cl);
+                @include midPositionY;
+                left: -74px;
+            }
+        }
+        &.--line-r {
+            &::after {
+                content: "";
+                display: block;
+                @include size(58px, 5px);
+                background: var(--main-cl);
+                @include midPositionY;
+                right: -74px;
+            }
+        }
+        &.--line-c {
+            &::after {
+                content: "";
+                display: block;
+                @include size(58px, 5px);
+                background: var(--main-cl);
+                margin: 6px auto 0;
+            }
+            @media screen and (max-width: 767.98px) {
+                &::after {
+                    margin-top: 8px;
+                }
+            }
+        }
+    }
+    &.--h3 {
+        font-size: var(--fs-h3);
+        line-height: var(--lh-h3);
+        letter-spacing: var(--ls-h3);
+    }
+    &.--yellow-cl {
+        color: var(--main-cl);
+    }
+    &.--white-cl {
+        color: var(--white-cl);
+    }
+}
+
+// ------
+/* Text Button */
+.textbutton {
+    @include text(
+        var(--white-cl),
+        var(--fs-text-button),
+        var(--font-body-bold),
+        var(--lh-text-button),
+        var(--ls-text-button),
+        uppercase
+    );
+}
+
+// ------
+/* Text Body small */
+.textbodysmall {
+    @include text(
+        var(--white-cl),
+        var(--fs-body-text-s),
+        var(--font-body),
+        var(--lh-body-text-s),
+        var(--ls-body-text-s)
+    );
+}
+
+// ------
+/* Text Title - News */
+.texttitle {
+    @include text(
+        var(--black-cl),
+        var(--fs-text-title),
+        var(--font-body-bold),
+        var(--lh-text-title),
+        var(--ls-text-title),
+        uppercase
+    );
+    height: 63px;
+    @include overtext(2);
+    @include transition;
+    &:hover {
+        color: var(--main-cl);
+    }
+    &.--line {
+        &::before {
+            content: "";
+            display: block;
+            @include size(35px, 3px);
+            background: var(--main-cl);
+            margin-bottom: 11px;
+        }
+    }
+    @media screen and (max-width: 991.98px) {
+        height: 55px;
+    }
+    @media screen and (max-width: 767.98px) {
+        height: initial;
+        @include overtext(initial);
+    }
+}
+
+// ------
+/* Button */
+.btnmain {
+    width: max-content;
+    height: var(--height-button);
+    padding: 0 34px;
+    @include mid(true);
+    gap: 10px;
+    border: 1px solid var(--white-cl);
+    margin-top: 16px;
+    @include transition;
+    .icon {
+        @include transition;
+    }
+    &:hover {
+        background-color: var(--main-cl);
+        .icon {
+            @include transform(translateX(6px));
+        }
+    }
+    &.--center {
+        margin-left: auto;
+        margin-right: auto;
+    }
+    @media screen and (max-width: 767.98px) {
+        margin-top: 9px;
+        padding: 0 20px;
+        gap: 8px;
+    }
+}
+
+.btnyellow {
+    height: var(--height-button-s);
+    padding: 0 18px;
+    @include mid(true);
+    background-color: var(--main-cl);
+    border: 1px solid var(--main-cl);
+    @include transition;
+    cursor: pointer;
+    &:hover {
+        border: 1px solid var(--white-cl);
+        background: rgba(190, 166, 124, 0);
+    }
+}
+
+.btnlearnmore {
+    color: var(--black-cl);
+    display: inline-block;
+    margin-top: 30px;
+    @include transition;
+    &::after {
+        content: "";
+        display: block;
+        @include size(30px, 2px);
+        background: var(--main-cl);
+        margin-top: 4px;
+    }
+    .icon {
+        @include transition;
+    }
+    &:hover {
+        color: var(--main-cl);
+        .icon {
+            @include transform(translateX(6px));
+        }
+    }
+    @media screen and (max-width: 767.98px) {
+        margin-top: 25px;
+    }
+}
+
+.btnwatch {
+    width: max-content;
+    height: var(--height-button);
+    padding: 0 42px;
+    @include mid(true);
+    gap: 10px;
+    border: 1px solid var(--white-cl);
+    margin-top: 45px;
+    @include transition;
+    cursor: pointer;
+    &:hover {
+        background-color: var(--main-cl);
+    }
+    &.--center {
+        margin-left: auto;
+        margin-right: auto;
+    }
+    @media screen and (max-width: 767.98px) {
+        height: 35px;
+        padding: 0 20px;
+        margin-top: 24px;
+    }
+}
+
+// ------
+/* Progressbar */
+.progressbar {
+    @include size(130px, 5px);
+    background-color: var(--black-cl);
+    position: relative;
+    overflow: hidden;
+    &__inner {
+        @include size(0%, 100%);
+        background: var(--main-cl);
+        position: absolute;
+    }
+    &.--center {
+        margin-left: auto;
+        margin-right: auto;
+    }
+    @media screen and (max-width: 767.98px) {
+        @include size(70px, 3px);
+    }
+}
+
+// ------
+/* progressbar on scroll */
+.progressbar-scroll {
+    width: 0%;
+    height: 4px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 500;
+    background-color: var(--main-cl);
+}
+
+// ------
+/* Mouse Move */
+.mouse {
+    @include visible(0);
+    @include size(50px);
+    background-color: var(--black-cl);
+    @include border-radius(100%);
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 100;
+    will-change: transform;
+    pointer-events: none;
+    &.--hover {
+        opacity: 0.6;
+        visibility: visible;
+    }
+}
+
+// ------
+/* POPUPVIDEO */
+.popup {
+    @include visible(0);
+    @include size(100vw, 100vh);
+    position: fixed;
+    top: 0;
+    left: 0;
+    background: rgba(0, 0, 0, 0.9);
+    @include mid(true);
+    z-index: 500;
+    @include transition;
+    &__inner {
+        width: 60%;
+        max-width: 1200px;
+        position: relative;
+        &-iframe {
+            width: 100%;
+            aspect-ratio: 1100/620;
+            overflow: hidden;
+            border: 4px solid var(--white-cl);
+            display: flex;
+            iframe {
+                width: 101%;
+                height: 101%;
+                object-fit: cover;
+            }
+            .icon {
+                @include size(30px);
+                position: absolute;
+                top: 0;
+                right: 0;
+                background-color: var(--main-cl);
+                @include mid(true);
+                cursor: pointer;
+            }
+        }
+        @media screen and (max-width: 1024px) {
+            width: 80%;
+        }
+        @media screen and (max-width: 767.98px) {
+            width: 90%;
+            &-iframe {
+                .icon {
+                    @include size(20px);
+                }
+            }
+        }
+    }
+    &.--show {
+        @include visible(1);
+    }
+}
+
+// ------
+/* MODAL SIGN UP */
+.modal {
+    @include visible(0);
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    @include mid(true);
+    z-index: 500;
+    @include animation(fadeIn linear 0.1s);
+    @include keyframes(fadeIn) {
+        from {
+            opacity: 0;
+        }
+        to {
+            opacity: 1;
+        }
+    }
+    @include transition(var(--duration));
+
+    &.--show {
+        @include visible(1);
+    }
+
+    &__overlay {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.9);
+    }
+
+    &__inner {
+        position: relative;
+        @include animation(growth linear 0.1s);
+        @include keyframes(fadeIn) {
+            from {
+                @include transform(scale(0.8));
+            }
+            to {
+                @include transform(scale(1));
+            }
+        }
+
+        &-signup {
+            background-color: var(--white-cl);
+            padding: 50px 57px;
+            width: 100%;
+            aspect-ratio: 604/686;
+            .title {
+                @include text(black, 4.6rem, var(--font-body-bold), 5.6rem, 4.6px, uppercase);
+            }
+            .socials {
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                gap: 16px;
+                margin-top: 23px;
+                &__btn {
+                    height: 48px;
+                    padding: 0 58px;
+                    min-width: 237px;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    gap: 10px;
+                    cursor: pointer;
+
+                    &-icon {
+                        display: flex;
+                    }
+
+                    &.btn-google {
+                        background: #4285f4;
+                    }
+                    &.btn-facebook {
+                        background: #3c5a99;
+                    }
+                }
+            }
+            .textline {
+                @include text(
+                    var(--gray-cl),
+                    var(--fs-body-text),
+                    var(--font-body),
+                    var(--lh-body-text),
+                    var(--ls-body-text)
+                );
+                margin: 17px 0 18px 0;
+                padding: 13px 0;
+                position: relative;
+                &::before {
+                    content: "";
+                    display: block;
+                    border: 1px solid var(--main-cl);
+                    @include mid;
+                    width: 100%;
+                }
+                p {
+                    @include mid;
+                    padding: 0 12px;
+                    background: var(--white-cl);
+                }
+            }
+            .formwrap {
+                .formgroup {
+                    .forminput {
+                        position: relative;
+                    }
+
+                    &:not(:last-child) {
+                        margin-bottom: 16px;
+                    }
+
+                    input {
+                        height: 47px;
+                        width: 100%;
+                        padding: 11px 20px;
+                        outline: none;
+                        border: 1px solid var(--gray-cl);
+                        background: var(--white-cl);
+                        opacity: 0.5;
+                        @include text(var(--black-cl), 1.8rem, var(--font-body), 2.5rem, 0.36px);
+                        &::placeholder {
+                            color: var(--black-cl);
+                        }
+                        &:focus {
+                            border-color: var(--black-cl);
+                        }
+                    }
+
+                    &.checkconfirm {
+                        margin-bottom: 22px;
+                        & > input[type="checkbox"] {
+                            position: absolute;
+                            opacity: 0;
+
+                            & + label {
+                                @include text(var(--gray-cl), 14px, var(--font-body), normal, 0.56px);
+                                padding-left: 24px;
+                                display: flex;
+                                align-items: center;
+                                position: relative;
+                                cursor: pointer;
+
+                                &::before {
+                                    content: "";
+                                    width: 16px;
+                                    height: 16px;
+                                    background: transparent;
+                                    border: 1px solid var(--gray-cl);
+                                    position: absolute;
+                                    left: 0;
+                                }
+
+                                &::after {
+                                    content: "";
+                                    width: 9.5px;
+                                    height: 7px;
+                                    background: url(../img/icon-check.svg) no-repeat;
+                                    background-size: 10px;
+                                    position: absolute;
+                                    left: 3px;
+                                }
+                            }
+
+                            &:not(:checked) {
+                                & + label {
+                                    &::after {
+                                        opacity: 0;
+                                    }
+                                }
+                            }
+
+                            &:checked {
+                                & + label {
+                                    &::after {
+                                        opacity: 1;
+                                    }
+                                    &::before {
+                                        background: var(--main-cl);
+                                        border-color: transparent;
+                                    }
+                                }
+                            }
+                        }
+                    }
+
+                    .formmessage {
+                        text-align: right;
+                    }
+
+                    &.--invalid {
+                        input {
+                            border-color: #f14336;
+                        }
+
+                        .formmessage {
+                            color: #f14336;
+                        }
+                    }
+
+                    .formicon {
+                        position: absolute;
+                        right: 20px;
+                        bottom: 16px;
+                        display: flex;
+                        cursor: pointer;
+
+                        .showeyes {
+                            display: block;
+                            &.hide {
+                                display: none;
+                            }
+                        }
+
+                        .hideeyes {
+                            display: none;
+                            &.show {
+                                display: block;
+                            }
+                        }
+                    }
+                }
+
+                .btnyellow {
+                    height: 48px;
+                    &:hover {
+                        background: var(--gray-cl);
+                    }
+                }
+            }
+
+            .iconclose {
+                @include size(30px);
+                position: absolute;
+                top: 0;
+                right: 0;
+                background-color: var(--main-cl);
+                @include mid(true);
+                cursor: pointer;
+            }
+        }
+    }
+
+    @include xxs {
+        &__inner {
+            width: 95%;
+            &-signup {
+                padding: 50px 30px;
+                aspect-ratio: 604/835;
+                overflow-y: scroll;
+                .title {
+                    @include text(black, 3.6rem, var(--font-body-bold), 4.6rem, 4.6px, uppercase);
+                }
+                .socials {
+                    flex-direction: column;
+                    &__btn {
+                        width: 100%;
+                    }
+                }
+            }
+        }
+    }
+
+    @include maxW(320px) {
+        &__inner {
+            &-signup {
+                .formwrap {
+                    .formgroup {
+                        &.checkconfirm {
+                            & > input[type="checkbox"] {
+                                & + label {
+                                    font-size: 13px;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

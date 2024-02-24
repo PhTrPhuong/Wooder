@@ -1,0 +1,48 @@
+// Menu mobile
+.menumobile {
+    @include visible(0);
+    width: 100vw;
+    height: calc(100vh - var(--height-header));
+    position: fixed;
+    top: var(--height-header);
+    left: 0;
+    z-index: 100;
+    background-color: var(--black-cl);
+    @include mid(true);
+    flex-direction: column;
+    @include transition;
+    ul {
+        li {
+            a {
+                @include text(var(--white-cl), 22px, var(--font-body-bold), normal, 1.76px, uppercase);
+                display: block;
+                padding: 15px 0;
+                @include transition;
+                &:hover {
+                    color: var(--main-cl);
+                }
+                &.--active {
+                    color: var(--main-cl);
+                }
+            }
+        }
+    }
+
+    .btnyellow {
+        margin-top: 11px;
+    }
+
+    &.--show {
+        @include visible(1);
+    }
+
+    @include maxW(320px) {
+        ul {
+            li {
+                a {
+                    padding: 8px 0;
+                }
+            }
+        }
+    }
+}

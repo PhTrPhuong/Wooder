@@ -1,0 +1,109 @@
+:root {
+  /* Gap, MaxWidth of page, Container-Fluid, Container */
+  --gap: 28px;
+  --max-width-page: 2560px;
+  --max-width-container-fluid: 1920px;
+  --max-width-container: calc(1196px + calc(var(--gap) * 2));
+
+  /* Color Variable */
+  --main-cl: #bea67c;
+  --white-cl: #ffffff;
+  --black-cl: #000000;
+  --gray-cl: #464646;
+
+  /* FontSize - LineHeight Variable */
+  --fs-h1: 8.4rem;
+  --lh-h1: normal;
+  --ls-h1: 1.008rem;
+
+  --fs-h2: 4.6rem;
+  --lh-h2: 5.6rem;
+  --ls-h2: 0.46rem;
+
+  --fs-h3: 1.8rem;
+  --lh-h3: 2.4rem;
+  --ls-h3: 0.072rem;
+
+  --fs-body-text: 1.8rem;
+  --lh-body-text: 2.5rem;
+  --ls-body-text: 0.036rem;
+
+  --fs-body-text-s: 1.4rem;
+  --lh-body-text-s: normal;
+  --ls-body-text-s: 0.056rem;
+
+  --fs-text-button: 1.5rem;
+  --lh-text-button: normal;
+  --ls-text-button: 0.15rem;
+
+  --fs-text-title: 1.8rem;
+  --lh-text-title: 2.4rem;
+  --ls-text-title: 0.072rem;
+
+  /* Font */
+  --font-body: pr;
+  --font-body-bold: pb;
+
+  /* General Variable */
+  --height-header: 90px;
+  --height-button: 44px;
+  --height-button-s: 38px;
+  --height-footer: 100px;
+  --pd-section: 120px;
+
+  /* Timing Transition Variable */
+  --duration: 0.4s;
+  --cubic-bezier: cubic-bezier(0.76, 0.35, 0.56, 0.58);
+
+  /* Responsive */
+  @include md {
+    --max-width-container: 1140px;
+  }
+
+  @include sm {
+    --max-width-container: 960px; // hoặc max-width: 100% tùy yêu cầu
+    --pd-section: 90px;
+  }
+
+  @include xs {
+    --gap: 10px;
+    --max-width-container: 720px; // hoặc max-width: 100% tùy yêu cầu
+
+    /* FontSize - LineHeight Variable */
+    --fs-h1: 5.6rem;
+    --ls-h1: 4.48px;
+
+    --fs-h2: 3.8rem;
+    --lh-h2: 4.2rem;
+    --ls-h2: 1.52px;
+
+    --fs-h3: 1.6rem;
+    --lh-h3: 2.2rem;
+    --ls-h3: 0.64px;
+
+    --fs-body-text: 1.5rem;
+    --lh-body-text: 2rem;
+    --ls-body-text: 0.6px;
+
+    --fs-body-text-s: 1.2rem;
+    --ls-body-text-s: 0.48px;
+
+    --fs-text-button: 1.2rem;
+    --ls-text-button: 1.2px;
+
+    --fs-text-title: 1.6rem;
+    --lh-text-title: 2.2rem;
+    --ls-text-title: 0.64px;
+
+    /* General Variable */
+    --height-header: 64px;
+    --height-button: 34px;
+    --height-button-s: 36px;
+    --height-footer: 92px;
+    --pd-section: 60px;
+  }
+
+  @include xxs {
+    --max-width-container: 100%;
+  }
+}

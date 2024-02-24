@@ -1,0 +1,65 @@
+html {
+  font-size: 62.5%; // 1rem = 10px
+  @include sm {
+    font-size: 54%;
+  }
+  @include xs {
+    font-size: 62.5%;
+  }
+  @include xxs {
+    font-size: 50%;
+  }
+}
+
+body {
+  width: 100%;
+  max-width: var(--max-width-page);
+  margin: auto;
+  scroll-behavior: smooth;
+  @include text(var(--black-cl), var(--fs-body-text), var(--font-body), var(--lh-body-text), var(--ls-body-text));
+  @include customscroll;
+  &.--disable-scroll {
+    height: 100vh;
+    overflow: hidden;
+    @include transition;
+  }
+  .container-fluid {
+    width: 100%;
+    max-width: var(--max-width-container-fluid);
+    padding-left: var(--gap);
+    padding-right: var(--gap);
+    margin-left: auto;
+    margin-right: auto;
+    position: relative;
+  }
+  .container {
+    width: 100%;
+    max-width: var(--max-width-container);
+    padding-left: var(--gap);
+    padding-right: var(--gap);
+    margin-left: auto;
+    margin-right: auto;
+    position: relative;
+  }
+  .main {
+    position: relative;
+    section {
+      &.--ptb {
+        padding: var(--pd-section) 0;
+      }
+      &.--pt {
+        padding-top: var(--pd-section);
+      }
+      &.--pb {
+        padding-bottom: var(--pd-section);
+      }
+    }
+  }
+  @include xs {
+    .container-fluid,
+    .container {
+      padding-right: calc(var(--gap) + 5px); // gap: 10 + 5 = 15px
+      padding-left: calc(var(--gap) + 5px);
+    }
+  }
+}

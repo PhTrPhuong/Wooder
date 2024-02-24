@@ -1,0 +1,42 @@
+.footer {
+  height: var(--height-footer);
+  .container {
+    @include dflexObj(flex, center, space-between);
+    height: 100%;
+  }
+  &__copyright {
+    opacity: 0.5;
+  }
+  &__logo {
+    @include midPositionX;
+  }
+  &__btn {
+    @include size(35px);
+    @include mid(true);
+    flex-shrink: 0;
+    border: 1px solid var(--white-cl);
+    background: var(--gray-cl);
+    cursor: pointer;
+    @include transition;
+    &:hover {
+      background: var(--main-cl);
+    }
+  }
+
+  @media screen and (max-width: 767.98px) {
+    .container {
+      flex-direction: column-reverse;
+      justify-content: center;
+    }
+    &__logo {
+      width: 135px;
+      position: initial;
+      transform: initial;
+      margin-bottom: 12px;
+    }
+    &__btn {
+      position: absolute;
+      right: 15px;
+    }
+  }
+}

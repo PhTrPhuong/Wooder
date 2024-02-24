@@ -1,0 +1,267 @@
+/* Laptop lớn, screen <= 1440px (tùy yêu cầu thiết kế) */
+@mixin lg {
+    @media screen and (max-width: 1440px) {
+        @content;
+    }
+}
+/* Laptop nhỏ hoặc tablet lớn, screen < 1200px */
+@mixin md {
+    @media screen and (max-width: 1199.98px) {
+        @content;
+    }
+}
+/* Tablets vừa, screen <= 992px */
+@mixin sm {
+    @media screen and (max-width: 991.98px) {
+        @content;
+    }
+}
+/* Tablets nhỏ hoặc Phones quay ngang, screen < 768px */
+@mixin xs {
+    @media screen and (max-width: 767.98px) {
+        @content;
+    }
+}
+/* Phones lớn, screen < 576px */
+@mixin xxs {
+    @media screen and (max-width: 575.98px) {
+        @content;
+    }
+}
+/* Phones nhỏ, screen < 376px - tùy yêu cầu */
+@mixin xxxs {
+    @media screen and (max-width: 375.98px) {
+        @content;
+    }
+}
+
+/* Landscape */
+@mixin landscape {
+    @media screen and (orientation: landscape) {
+        @content;
+    }
+}
+
+/* @media max, min */
+@mixin maxW($args) {
+    @media (max-width: $args) {
+        @content;
+    }
+}
+@mixin minW($args) {
+    @media (min-width: $args) {
+        @content;
+    }
+}
+@mixin maxH($args) {
+    @media (max-height: $args) {
+        @content;
+    }
+}
+@mixin minH($args) {
+    @media (min-height: $args) {
+        @content;
+    }
+}
+
+/* CSS Animation */
+@mixin animation($str) {
+    -webkit-animation: #{$str};
+    -moz-animation: #{$str};
+    -ms-animation: #{$str};
+    -o-animation: #{$str};
+    animation: #{$str};
+}
+
+@mixin animation-delay($str) {
+    -webkit-animation-delay: #{$str};
+    -moz-animation-delay: #{$str};
+    -ms-animation-delay: #{$str};
+    -o-animation-delay: #{$str};
+    animation-delay: #{$str};
+}
+
+@mixin keyframes($animation-name) {
+    @-webkit-keyframes #{$animation-name} {
+        @content;
+    }
+    @-moz-keyframes #{$animation-name} {
+        @content;
+    }
+    @-ms-keyframes #{$animation-name} {
+        @content;
+    }
+    @-o-keyframes #{$animation-name} {
+        @content;
+    }
+    @keyframes #{$animation-name} {
+        @content;
+    }
+}
+
+/* CSS Transition */
+@mixin transition($property...) {
+    -webkit-transition: $property var(--duration);
+    -moz-transition: $property var(--duration);
+    -ms-transition: $property var(--duration);
+    -o-transition: $property var(--duration);
+    transition: $property var(--duration);
+}
+
+@mixin transition-timing-function($timing...) {
+    -moz-transition-timing-function: $timing;
+    -o-transition-timing-function: $timing;
+    -webkit-transition-timing-function: $timing;
+    transition-timing-function: $timing;
+}
+
+/* CSS Transform */
+@mixin transform($args) {
+    -webkit-transform: $args;
+    -moz-transform: $args;
+    -ms-transform: $args;
+    -o-transform: $args;
+    transform: $args;
+}
+
+@mixin transform-origin($args) {
+    -webkit-transform-origin: $args;
+    -moz-transform-origin: $args;
+    -ms-transform-origin: $args;
+    -o-transform-origin: $args;
+    transform-origin: $args;
+}
+
+/* CSS Text */
+@mixin text($color, $font-size, $font-family, $line-height, $letter-spacing, $text-transform: none) {
+    color: $color;
+    font-size: $font-size;
+    font-family: $font-family;
+    line-height: $line-height;
+    letter-spacing: $letter-spacing;
+    text-transform: $text-transform;
+}
+
+/* Middle Object */
+@mixin mid($flex: false) {
+    @if $flex == false {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        @include transform(translate(-50%, -50%));
+    } @else {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+}
+
+@mixin midPositionX {
+    position: absolute;
+    left: 50%;
+    @include transform(translateX(-50%));
+}
+
+@mixin midPositionY {
+    position: absolute;
+    top: 50%;
+    @include transform(translateY(-50%));
+}
+
+/* Display Flex Obj */
+@mixin dflexObj($display, $align-items, $justify-content) {
+    display: $display;
+    align-items: $align-items;
+    justify-content: $justify-content;
+}
+
+/* Middle Img */
+@mixin imgframe($w, $h) {
+    // display: flex;
+    width: 100%;
+    aspect-ratio: #{$w}/#{$h};
+    // position: relative;
+    overflow: hidden;
+    img {
+        width: 101%;
+        height: 101%;
+        object-fit: cover;
+    }
+}
+
+// FullScreen
+@mixin fullscreen($fixed: false) {
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    @if $fixed {
+        position: fixed;
+    } @else {
+        position: absolute;
+    }
+}
+
+/* Visible */
+@mixin visible($param: 1) {
+    @if $param == 1 {
+        opacity: 1;
+        visibility: visible;
+    } @else {
+        opacity: 0;
+        visibility: hidden;
+    }
+}
+// @mixin visible($param: 1) {
+//   @if $param == 1 {
+//     opacity: 1;
+//     pointer-events: auto;
+//   } @else {
+//     opacity: 0;
+//     pointer-events: none;
+//   }
+// }
+
+/* Size DIV */
+@mixin size($w, $h: $w, $circle: false) {
+    width: $w;
+    height: $h;
+    @if $circle {
+        border-radius: 100%;
+    }
+}
+
+/* IMG object-fit */
+@mixin imgObjFit($object-fit) {
+    width: 100%;
+    height: 100%;
+    object-fit: $object-fit;
+}
+
+/* Border Radius */
+@mixin border-radius($radius) {
+    border-radius: $radius;
+    background-clip: padding-box;
+}
+
+/* Overflow Text Dots */
+@mixin overtext($lines) {
+    display: -webkit-box;
+    -webkit-line-clamp: $lines;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* Customize Scroll Bar */
+@mixin customscroll($width: 6px, $bgTrack: transparent, $bgThumb: var(--gray-cl)) {
+    &::-webkit-scrollbar {
+        width: $width;
+    }
+    &::-webkit-scrollbar-track {
+        background: $bgTrack;
+    }
+    &::-webkit-scrollbar-thumb {
+        background: $bgThumb;
+    }
+}
